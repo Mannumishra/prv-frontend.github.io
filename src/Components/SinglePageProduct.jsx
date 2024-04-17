@@ -13,7 +13,7 @@ const SinglePageProduct = () => {
 
     const getApiDataCategory = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/category");
+            let res = await axios.get("https://prv-backend-github-io.onrender.com/api/category");
             setAllCategory(res.data.data);
         } catch (error) {
             console.log(error);
@@ -22,7 +22,7 @@ const SinglePageProduct = () => {
 
     const getApiDataSubCategory = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/subcategory");
+            let res = await axios.get("https://prv-backend-github-io.onrender.com/api/subcategory");
             setAllSubcategory(res.data.data);
         } catch (error) {
             console.log(error);
@@ -51,7 +51,7 @@ const SinglePageProduct = () => {
 
     const getAPIData = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/product");
+            let res = await axios.get("https://prv-backend-github-io.onrender.com/api/product");
             setProduct(res.data.data);
         } catch (error) {
             console.log(error);

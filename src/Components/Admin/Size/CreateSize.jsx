@@ -18,7 +18,7 @@ const CreateSize = () => {
 
   const getApiDataCategory = async () => {
     try {
-      let res = await axios.get("http://localhost:8000/api/category");
+      let res = await axios.get("https://prv-backend-github-io.onrender.com/api/category");
       setAllCategory(res.data.data);
     } catch (error) {
       console.log(error);
@@ -29,7 +29,7 @@ const CreateSize = () => {
     e.preventDefault();
     console.log(data)
     try {
-      let res = await axios.post("http://localhost:8000/api/size", data);
+      let res = await axios.post("https://prv-backend-github-io.onrender.com/api/size", data);
       if (res.status === 200) {
         navigate("/admin/size");
       }

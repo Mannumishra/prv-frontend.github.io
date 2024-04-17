@@ -9,7 +9,7 @@ const AdminProduct = () => {
    const deleteProduct = async (_id) => {
       try {
          const token = localStorage.getItem('token');
-         const res = await axios.delete(`http://localhost:8000/api/product/${_id}`, {
+         const res = await axios.delete(`https://prv-backend-github-io.onrender.com/api/product/${_id}`, {
             headers: {
                Authorization: `${token}`
             }
@@ -23,7 +23,7 @@ const AdminProduct = () => {
    const getAPIData = async () => {
       try {
          const token = localStorage.getItem('token');
-         const res = await axios.get("http://localhost:8000/api/product", {
+         const res = await axios.get("https://prv-backend-github-io.onrender.com/api/product", {
             headers: {
                Authorization: `${token}`
             }

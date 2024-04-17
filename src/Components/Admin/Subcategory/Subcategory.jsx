@@ -8,7 +8,7 @@ const Subcategory = () => {
 
   const getApiData = async () => {
     try {
-      let res = await axios.get("http://localhost:8000/api/subcategory")
+      let res = await axios.get("https://prv-backend-github-io.onrender.com/api/subcategory")
       console.log(res);
       setData(res.data.data)
     } catch (error) {
@@ -21,7 +21,7 @@ const Subcategory = () => {
 
   const deleteProduct = async (_id) => {
     try {
-      let res = await axios.delete("http://localhost:8000/api/subcategory/" + _id)
+      let res = await axios.delete("https://prv-backend-github-io.onrender.com/api/subcategory/" + _id)
       console.log(res);
       getApiData()
     } catch (error) {

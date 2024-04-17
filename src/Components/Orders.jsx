@@ -8,7 +8,7 @@ const Orders = () => {
 
     const getApiData = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/order");
+            let res = await axios.get("https://prv-backend-github-io.onrender.com/api/order");
             setStore(res.data.data);
         } catch (error) {
             console.log(error);

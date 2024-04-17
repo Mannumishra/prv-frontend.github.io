@@ -18,7 +18,7 @@ const CreateCtegory = () => {
     e.preventDefault()
     // alert(name)
     try {
-      let res = await axios.post("http://localhost:8000/api/category", data)
+      let res = await axios.post("https://prv-backend-github-io.onrender.com/api/category", data)
       if(res.status===200)
       navigate("/admin/category")
     } catch (error) {

@@ -18,7 +18,7 @@ const UpdateCategory = () => {
     const postData = async (e) => {
         e.preventDefault();
         try {
-            let res = await axios.put(`http://localhost:8000/api/category/${_id}`, data);
+            let res = await axios.put(`https://prv-backend-github-io.onrender.com/api/category/${_id}`, data);
             console.log(res);
             if (res.status === 200) {
                 navigate("/admin/category"); // Redirect to the category list page
@@ -31,7 +31,7 @@ const UpdateCategory = () => {
 
     const getApiData = async () => {
         try {
-            let res = await axios.get(`http://localhost:8000/api/category/${_id}`);
+            let res = await axios.get(`https://prv-backend-github-io.onrender.com/api/category/${_id}`);
             setData(res.data.data);
         } catch (error) {
             console.log(error);

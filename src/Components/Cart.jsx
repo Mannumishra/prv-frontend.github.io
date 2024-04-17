@@ -30,7 +30,7 @@ const Cart = () => {
             }
 
             const token = localStorage.getItem('token');
-            let res = await axios.post("http://localhost:8000/api/order", details, {
+            let res = await axios.post("https://prv-backend-github-io.onrender.com/api/order", details, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

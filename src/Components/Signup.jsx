@@ -18,7 +18,7 @@ const Signup = () => {
   const postData = async (e) => {
     e.preventDefault()
     try {
-      let res = await axios.post("http://localhost:8000/api/user", data)
+      let res = await axios.post("https://prv-backend-github-io.onrender.com/api/user", data)
       console.log(res);
       if (res.status === 200)
         navigate("/login")

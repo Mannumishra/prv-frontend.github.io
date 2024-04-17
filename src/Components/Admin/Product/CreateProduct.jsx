@@ -38,7 +38,7 @@ const CreateProduct = () => {
 
    const getApiDataCategory = async () => {
       try {
-         let res = await axios.get("http://localhost:8000/api/category");
+         let res = await axios.get("https://prv-backend-github-io.onrender.com/api/category");
          setAllCategory(res.data.data);
       } catch (error) {
          console.log(error);
@@ -47,7 +47,7 @@ const CreateProduct = () => {
 
    const getApiDataSubCategory = async () => {
       try {
-         let res = await axios.get("http://localhost:8000/api/subcategory");
+         let res = await axios.get("https://prv-backend-github-io.onrender.com/api/subcategory");
          setAllSubcategory(res.data.data);
       } catch (error) {
          console.log(error);
@@ -55,7 +55,7 @@ const CreateProduct = () => {
    };
    const getApiDataSize = async () => {
       try {
-         let res = await axios.get("http://localhost:8000/api/size");
+         let res = await axios.get("https://prv-backend-github-io.onrender.com/api/size");
          setAllSize(res.data.data);
       } catch (error) {
          console.log(error);
@@ -95,7 +95,7 @@ const CreateProduct = () => {
       e.preventDefault();
       try {
          const token = localStorage.getItem('token');
-         const res = await axios.post('http://localhost:8000/api/product', formData, {
+         const res = await axios.post('https://prv-backend-github-io.onrender.com/api/product', formData, {
             headers: {
                Authorization: `Bearer ${token}`
             }

@@ -9,7 +9,7 @@ const SingleProductPage = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/product/${_id}`);
+                const response = await axios.get(`https://prv-backend-github-io.onrender.com/api/product/${_id}`);
                 setProduct(response.data.data);
             } catch (error) {
                 console.log(error);

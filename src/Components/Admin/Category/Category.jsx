@@ -8,7 +8,7 @@ const Category = () => {
 
     const getApiData = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/category")
+            let res = await axios.get("https://prv-backend-github-io.onrender.com/api/category")
             // console.log(res);
             setData(res.data.data)
         } catch (error) {
@@ -21,7 +21,7 @@ const Category = () => {
 
     const deleteProduct = async (_id) => {
         try {
-            let res = await axios.delete("http://localhost:8000/api/category/" + _id)
+            let res = await axios.delete("https://prv-backend-github-io.onrender.com/api/category/" + _id)
             console.log(res);
             getApiData()
         } catch (error) {

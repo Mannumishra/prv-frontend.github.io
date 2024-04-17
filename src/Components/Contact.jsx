@@ -16,7 +16,7 @@ const Contact = () => {
    // console.log(data);
    const postData = async (e) => {
       e.preventDefault()
-      let response = await fetch("http://localhost:8000/api/contact", {
+      let response = await fetch("https://prv-backend-github-io.onrender.com/api/contact", {
          method: "post",
          headers: {
             "content-type": "application/json"

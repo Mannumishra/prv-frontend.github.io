@@ -7,8 +7,9 @@ const Product = () => {
 
     const getAPIData = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/product");
+            let res = await axios.get("https://prv-backend-github-io.onrender.com/api/product");
             setData(res.data.data);
+            console.log(res.data.data)
         } catch (error) {
             console.log(error);
         }

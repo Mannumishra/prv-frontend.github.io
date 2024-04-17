@@ -6,7 +6,7 @@ const AdminOrder = () => {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("http://localhost:8000/api/order");
+            const res = await axios.get("https://prv-backend-github-io.onrender.com/api/order");
             setOrders(res.data.data);
         } catch (error) {
             console.log(error);

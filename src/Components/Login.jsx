@@ -16,7 +16,7 @@ const Login = () => {
   const postData = async (e) => {
     e.preventDefault()
     try {
-      let res = await axiox.post("http://localhost:8000/api/user/login", data)
+      let res = await axiox.post("https://prv-backend-github-io.onrender.com/api/user/login", data)
       console.log(res);
       if (res.status === 200) {
         localStorage.setItem("token", res.data.token)
