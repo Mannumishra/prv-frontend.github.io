@@ -26,7 +26,8 @@ export default function Navbar() {
     const handleLogout = () => {
         sessionStorage.clear();
         localStorage.clear();
-        setIsLoggedIn(false); 
+        setIsLoggedIn(false);
+        window.location.href = "/login";
     };
 
     const handleLinkClick = () => {
@@ -72,7 +73,7 @@ export default function Navbar() {
                     <div className="">
                         {token ? (
                             <div className="search">
-                                <button onClick={handleLogout} className='btn' onClick={handleLinkClick}>Logout</button>
+                                <button onClick={handleLogout} className='btn'>Logout</button>
                             </div>
                         ) : (
                             <div className="search">
