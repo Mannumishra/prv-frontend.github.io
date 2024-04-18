@@ -22,8 +22,8 @@ const Login = () => {
       if (res.status === 200) {
         localStorage.setItem("token", res.data.token)
         toast.success("Login successfully");
-        // localStorage.setItem("userid",res.data.userid)
-        // console.log(sessionStorage.setItem('user', JSON.stringify(res.data.data)));
+        localStorage.setItem("userid",res.data.userid)
+        console.log(sessionStorage.setItem('user', JSON.stringify(res.data.data)));
         if (res.data.data.role === "Admin") {
           window.location.href = "/adminhome"
         }
