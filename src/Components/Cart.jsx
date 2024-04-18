@@ -52,41 +52,41 @@ const Cart = () => {
     };
 
     return (
-        <div>
+
+       <>
+       
+        <div className="container p-4">
             <h2 className='mb-3'>Cart Items <span className='float-end'><Link to="/singlepage" className='btn btn-success float-right'>Shop Now </Link></span></h2>
-            <table className='table table-bordered table-responsive'>
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Product Name</th>
-                        <th>Product Category</th>
-                        <th>Product Subcategory</th>
-                        <th>Quantity</th>
-                        <th>Size</th>
-                        <th>Color</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {cartItems.slice().reverse().map((item, index) => ( // Reversing the order of displayed cart items
-                        <tr key={index}>
-                            <td><img src={item.image} alt="" style={{ height: "100px" }} /></td>
-                            <td>{item.name}</td>
-                            <td>{item.maincategory}</td>
-                            <td>{item.subcategory}</td>
-                            <td>{item.quantity}</td>
-                            <td>{item.sizename}</td>
-                            <td>{item.color}</td>
-                            <td><button className='btn btn-danger' onClick={() => deleteFromCart(index)}>Remove </button></td>
+            <div className="table-responsive">
+                <table className='table table-bordered'>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
                         </tr>
-                    ))}
-                    <tr>
-                        <td colSpan={5}><button className='btn btn-primary float-right' onClick={postData}>Place Order</button></td>
-                    </tr>
-                </tbody>
-            </table>
-            <Link to="/orders" className='btn btn-success float-right'>See Order Details </Link>
+                    </thead>
+                    <tbody>
+                        {cartItems.slice().reverse().map((item, index) => ( // Reversing the order of displayed cart items
+                            <tr key={index}>
+                                <td><img src={item.image} alt="" style={{ height: "100px" }} /></td>
+                                <td>{item.name}</td>
+                                <td>{item.quantity}</td>
+                                <td><button className='btn btn-danger' onClick={() => deleteFromCart(index)}>Remove </button></td>
+                            </tr>
+                        ))}
+                        <tr>
+                            <td colSpan={2}><button className='btn btn-primary ' onClick={postData}>Place Order</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div className="mt-3">
+                <Link to="/orders" className='btn btn-success float-end'>See Order Details </Link>
+            </div>
         </div>
+       </>
     );
 }
 

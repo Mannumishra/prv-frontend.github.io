@@ -395,17 +395,21 @@
 .logo {
     max-width: 150px
   }
-  .banare{
-    width: 100%;
-  }
+  .banare {
+    width: 100%; /* Set width to 100% */
+    max-width: 100%; /* Set maximum width to 100% */
+}
   
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .logo {
-      max-width: 120px; 
-    } .banare{
-        width: 100%;
-      }
-  }
+        max-width: 120px; 
+    }
+    .banare {
+        max-width: 100%; /* Set a maximum width for the image on smaller screens */
+        height: 100%;
+        object-fit: cover;
+    }
+}
 .about_text{
     text-align: center;
     font-size: 25px;
