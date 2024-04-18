@@ -20,8 +20,8 @@ const Login = () => {
     try {
       let res = await axiox.post("https://prv-backend-github-io.onrender.com/api/user/login", data)
       if (res.status === 200) {
-        toast.success("Login successfully");
         localStorage.setItem("token", res.data.token)
+        toast.success("Login successfully");
         // localStorage.setItem("userid",res.data.userid)
         // console.log(sessionStorage.setItem('user', JSON.stringify(res.data.data)));
         if (res.data.data.role === "Admin") {
