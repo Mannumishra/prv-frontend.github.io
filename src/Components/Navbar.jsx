@@ -40,7 +40,7 @@ export default function Navbar() {
             <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
                 {/* Navbar Brand */}
                 <Link to="/" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
-                    <img src="/img/logo.jpg" alt="" style={{ height: 50 }} />
+                    <img src="/img/logo.jpg" alt="" className='logo'  />
                 </Link>
 
                 {/* Navbar Toggler */}

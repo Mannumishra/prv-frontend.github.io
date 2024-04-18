@@ -392,6 +392,20 @@
 }
 
 /* self */
+.logo {
+    max-width: 150px
+  }
+  .banare{
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .logo {
+      max-width: 50px; 
+    } .banare{
+        width: 100%;
+      }
+  }
 .about_text{
     text-align: center;
     font-size: 25px;
@@ -405,9 +419,9 @@
 @media only screen and (max-width: 768px) {
     .vedio_tag {
         height: 150px;
-        width: 300px;
+        width: 380px;
     }
     }
   
     
-  }
+  

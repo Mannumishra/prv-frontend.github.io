@@ -27,7 +27,7 @@ export default function Home() {
                 <div id="header-carousel" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img className="w-100" src="img/shoes.jpg" height="500px" width="100%" alt="Image" />
+                            <img className="banare" src="img/shoes.jpg"   alt="Image" />
                             {/* <div className="carousel-caption d-flex align-items-center"> */}
                             {/* <div className="container">
                                     <div className="row align-items-center justify-content-center justify-content-lg-start">
@@ -44,7 +44,7 @@ export default function Home() {
                             {/* </div> */}
                         </div>
                         <div className="carousel-item">
-                            <img className="w-100" src="img/second.jpg" height="500px" width="100%" alt="Image" />
+                            <img className="banare" src="img/second.jpg"  alt="Image" />
                         </div>
 
                     </div>
@@ -71,13 +71,13 @@ export default function Home() {
                     <h3 className='text-center'>Our Category Product</h3>
                 </div>
                 <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-4 mb-2">
                         <img src="img/13.jpeg" alt="" style={{ height: 500 }} />
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 mb-2">
                         <img src="img/12.jpeg" alt="" style={{ height: 500 }} />
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 mb-2">
                         <img src="img/11.jpeg" alt="" style={{ height: 500 }} />
                     </div>
                 </div>
