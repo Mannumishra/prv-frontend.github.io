@@ -26,7 +26,7 @@ export default function Navbar() {
     const handleLogout = () => {
         sessionStorage.clear();
         localStorage.clear();
-        window.location.href = "/";
+        setIsLoggedIn(false); 
     };
 
     const handleLinkClick = () => {
