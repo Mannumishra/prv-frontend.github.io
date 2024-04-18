@@ -34,7 +34,7 @@ const Login = () => {
       else
         toast.error("Please Check User Name Or Password");
     } catch (error) {
-      toast.error("Internal Server error");
+      toast.error("Please Check Username Or Password");
     }
   }
   return (
