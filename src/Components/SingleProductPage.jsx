@@ -35,12 +35,12 @@ const SingleProductPage = () => {
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-md-6">
-                        <img src={product.pic1} alt={product.name} style={{ width: '400px', maxWidth: 400 }} />
+                        <img src={product.pic1} alt={product.name} className="img-fluid" />
                     </div>
                     <div className="col-md-6">
                         <h2>Product Name: <span className='text-danger'>{product.name}</span></h2>
                         <h2>Stock: <span>{product.stock}</span></h2>
-                        <h2>Category: <span>{product.category}</span></h2>
+                        <h2>Category: <span>{product.maincategory}</span></h2>
                         <h2>SubCategory: <span>{product.subcategory}</span></h2>
                         <h2>Brand: <span>{product.brand}</span></h2>
                     </div>
