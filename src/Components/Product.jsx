@@ -49,7 +49,7 @@ const Product = () => {
                 <div className="row">
                     {data.map((item, index) => (
                         <div className='col-md-4 mb-4 mt-5' key={index}>
-                            <img src={item.pic1} alt="" style={{ borderRadius: "20px", height: 250 }} />
+                            <Link  to={`/product/${item._id}`}><img src={item.pic1} alt="" style={{ borderRadius: "20px", height: 250 }} /></Link>
                             <div style={{ color: "black" }}>{item.name}</div>
                             <div><h5>Category: {item.maincategory}</h5></div>
                             <div><Link className='btn' to={`/product/${item._id}`} style={{ backgroundColor: "#212121", color: "white" }}>View Product</Link></div>
