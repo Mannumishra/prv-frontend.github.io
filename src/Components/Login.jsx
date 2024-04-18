@@ -19,24 +19,22 @@ const Login = () => {
     e.preventDefault()
     try {
       let res = await axiox.post("https://prv-backend-github-io.onrender.com/api/user/login", data)
-      console.log(res);
       if (res.status === 200) {
         toast.success("Login successfully");
         localStorage.setItem("token", res.data.token)
         // localStorage.setItem("userid",res.data.userid)
-        console.log(sessionStorage.setItem('user', JSON.stringify(res.data.data)));
+        // console.log(sessionStorage.setItem('user', JSON.stringify(res.data.data)));
         if (res.data.data.role === "Admin") {
           window.location.href = "/adminhome"
         }
-
         else if (res.data.data.role === "Buyer") {
           window.location.href = "/singlepage"
         }
       }
       else
-        alert("UN athorized person")
+        toast.error("Please Check User Name Or Password");
     } catch (error) {
-      console.log(error);
+      toast.error("Internal Server error");
     }
   }
   return (
