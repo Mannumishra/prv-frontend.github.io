@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react'
+import toast from 'react-hot-toast';
 
 const Contact = () => {
    const [data, setData] = useState({
@@ -16,15 +18,15 @@ const Contact = () => {
    // console.log(data);
    const postData = async (e) => {
       e.preventDefault()
-      let response = await fetch("https://prv-backend-github-io.onrender.com/api/contact", {
-         method: "post",
-         headers: {
-            "content-type": "application/json"
-         },
-         body: JSON.stringify(data)
-      })
-      response = await response.json()
-      console.log(response);
+     try {
+      let res = await axios.post("https://prv-backend-github-io.onrender.com/api/contact" ,data)
+      if (res.status === 200) {
+         toast.success("Our team soon Contact You");
+         window.location.reload()
+      }
+     } catch (error) {
+      console.log(error);
+     }
    }
    return (
       <>
