@@ -2,6 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import Sidebar from '../Sidebar';
+import toast from 'react-hot-toast';
+
+
 
 const UpdateSize = () => {
   const { _id } = useParams();
@@ -31,7 +34,10 @@ const UpdateSize = () => {
       let res = await axios.put(`https://prv-backend-github-io.onrender.com/api/size/${_id}`, data);
       console.log(res);
       if (res.status === 200) {
+        toast.success("Size updated successfully");
         navigate("/admin/size");
+      } else {
+        toast.error("Failed to add subcategory");
       }
     } catch (error) {
       console.log(error);
@@ -60,7 +66,7 @@ const UpdateSize = () => {
       }));
     }
   }, [allCategory]);
-  
+
   return (
     <>
       <div className="blue_bg mt-5">

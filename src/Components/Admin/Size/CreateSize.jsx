@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../Sidebar';
+import toast from 'react-hot-toast';
+
 
 const CreateSize = () => {
   const navigate = useNavigate();
@@ -31,7 +33,10 @@ const CreateSize = () => {
     try {
       let res = await axios.post("https://prv-backend-github-io.onrender.com/api/size", data);
       if (res.status === 200) {
-        navigate("/admin/size");
+        toast.success("Size Created successfully");
+        navigate("/admin/size")
+      } else {
+        toast.error("Failed to Created Size");
       }
     } catch (error) {
       console.log(error);

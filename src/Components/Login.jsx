@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axiox from "axios"
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast';
+
 
 const Login = () => {
   const navigate = useNavigate()
@@ -19,6 +21,7 @@ const Login = () => {
       let res = await axiox.post("https://prv-backend-github-io.onrender.com/api/user/login", data)
       console.log(res);
       if (res.status === 200) {
+        toast.success("Login successfully");
         localStorage.setItem("token", res.data.token)
         // localStorage.setItem("userid",res.data.userid)
         console.log(sessionStorage.setItem('user', JSON.stringify(res.data.data)));
@@ -26,7 +29,7 @@ const Login = () => {
           window.location.href = "/adminhome"
         }
 
-        else if(res.data.data.role === "Buyer"){
+        else if (res.data.data.role === "Buyer") {
           window.location.href = "/singlepage"
         }
       }

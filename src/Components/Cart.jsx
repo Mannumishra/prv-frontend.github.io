@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Cart = () => {
     const UserString = sessionStorage.getItem('user');
     const User = JSON.parse(UserString);
     const [cartItems, setCartItems] = useState([]);
-    // console.log(cartItems);
 
     const deleteFromCart = (index) => {
         const updatedCartItems = [...cartItems];
@@ -20,38 +20,46 @@ const Cart = () => {
         setCartItems(storedCartItems);
     }, []);
 
-    console.log(cartItems);
     const postData = async () => {
         try {
-            const userid = User._id
+            const userid = User._id;
             const details = {
                 userid: userid,
                 cartItems: cartItems
-            }
+            };
+            console.log("Request Payload", details);
 
             const token = localStorage.getItem('token');
-            let res = await axios.post("https://prv-backend-github-io.onrender.com/api/order", details, {
+            const res = await axios.post("https://prv-backend-github-io.onrender.com/api/order", details, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            })
-            console.log(res);
-            sessionStorage.removeItem("cartItems")
+            });
 
+            console.log("Response", res);
+
+            if (res.status === 200) {
+                toast.success("Order placed successfully");
+                setCartItems([]); // Empty the cart
+                sessionStorage.removeItem("cartItems"); // Remove items from session storage
+            } else {
+                toast.error("Failed to place order");
+            }
         } catch (error) {
-            console.log(error)
+            console.error("Error while placing order:", error);
+            toast.error("Error while placing order");
         }
-    }
+    };
 
     return (
         <div>
-            <h2>Cart Items</h2>
-            <table className='table table-bordered'>
+            <h2 className='mb-3'>Cart Items <span className='float-end'><Link to="/singlepage" className='btn btn-success float-right'>Shop Now </Link></span></h2>
+            <table className='table table-bordered table-responsive'>
                 <thead>
                     <tr>
                         <th>Image</th>
                         <th>Product Name</th>
-                        <th>Product Categgory</th>
+                        <th>Product Category</th>
                         <th>Product Subcategory</th>
                         <th>Quantity</th>
                         <th>Size</th>
@@ -60,24 +68,24 @@ const Cart = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {cartItems.map((item, index) => (
+                    {cartItems.slice().reverse().map((item, index) => ( // Reversing the order of displayed cart items
                         <tr key={index}>
                             <td><img src={item.image} alt="" style={{ height: "100px" }} /></td>
                             <td>{item.name}</td>
-                            <td>{item.category}</td>
+                            <td>{item.maincategory}</td>
                             <td>{item.subcategory}</td>
-                            <td>{item.size}</td>
                             <td>{item.quantity}</td>
+                            <td>{item.sizename}</td>
                             <td>{item.color}</td>
-                            <td ><button className='btn btn-danger' onClick={() => deleteFromCart(index)}>Remove </button></td>
+                            <td><button className='btn btn-danger' onClick={() => deleteFromCart(index)}>Remove </button></td>
                         </tr>
                     ))}
                     <tr>
                         <td colSpan={5}><button className='btn btn-primary float-right' onClick={postData}>Place Order</button></td>
-                        <td ><Link to="/singlepage" className='btn btn-success float-right'>Shop Now </Link></td>
                     </tr>
                 </tbody>
             </table>
+            <Link to="/orders" className='btn btn-success float-right'>See Order Details </Link>
         </div>
     );
 }

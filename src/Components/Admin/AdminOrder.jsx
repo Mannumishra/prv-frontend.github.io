@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const AdminOrder = () => {
     const [orders, setOrders] = useState([]);
@@ -41,37 +42,28 @@ const AdminOrder = () => {
                 </div>
             </div>
             <div className="container">
-            {orders.map(order => (
-                <div key={order.orderId}>
-                    <h3>User: {order.user.username}</h3>
-                    <p>Contact Number: {order.user.phone}</p>
-                    <table className="table table-bordered">
+                <div className="table-responsive">
+                    <table className='table table-bordered'>
                         <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Product Name</th>
-                                <th>Size</th>
-                                <th>Quantity</th>
-                                <th>Category</th>
-                                <th>Subcategory</th>
+                                <th><h4>Name</h4></th>
+                                <th><h4>Contact Number</h4></th>
+                                <th><h4>Order Id</h4></th>
+                                <th><h4>Date</h4></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {order.product.map(product => (
-                                <tr key={product._id}>
-                                    <td><img src={product.image} alt={product.name} className='imgs' /></td>
-                                    <td>{product.name}</td>
-                                    <td>{product.size}</td>
-                                    <td>{product.quantity}</td>
-                                    <td>{product.category}</td>
-                                    <td>{product.subcategory}</td>
+                            {orders.slice().reverse().map(order => (
+                                <tr key={order.orderId}>
+                                    <td><h6>{order.user.username}</h6></td>
+                                    <td><h6>{order.user.phone}</h6></td>
+                                    <td><Link to={`/adminordersinglpage/${order.orderId}`} className='btn mb-1'>Order Id: {order.orderId}</Link></td>
+                                    {/* Adjust the button placement as needed */}
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
-            ))}
-        
             </div>
         </>
     );

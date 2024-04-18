@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../Sidebar'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast';
+
 
 const Size = () => {
   let [data, setData] = useState([])
@@ -9,8 +11,7 @@ const Size = () => {
   const getApiData = async () => {
     try {
       let res = await axios.get("https://prv-backend-github-io.onrender.com/api/size")
-      console.log(res);
-      setData(res.data.data)
+      setData(res.data.data.reverse()); // Reversing the order of sizes
     } catch (error) {
       console.log(error);
     }
@@ -22,7 +23,11 @@ const Size = () => {
   const deleteProduct = async (_id) => {
     try {
       let res = await axios.delete("https://prv-backend-github-io.onrender.com/api/size/" + _id)
-      console.log(res);
+      if (res.status === 200) {
+        toast.success("Size Deleted successfully");
+      } else {
+        toast.error("Failed to delete Size");
+      }
       getApiData()
     } catch (error) {
       console.log(error);
@@ -35,7 +40,7 @@ const Size = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="titlepage">
-                <h2 className='text-center'>Admin  Size Table </h2>
+                <h2 className='text-center'>Admin Size Table </h2>
               </div>
             </div>
           </div>

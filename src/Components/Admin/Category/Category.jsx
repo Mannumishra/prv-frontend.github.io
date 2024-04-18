@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Sidebar from '../Sidebar'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import toast from 'react-hot-toast';
+
 
 const Category = () => {
     let [data, setData] = useState([])
@@ -9,8 +11,7 @@ const Category = () => {
     const getApiData = async () => {
         try {
             let res = await axios.get("https://prv-backend-github-io.onrender.com/api/category")
-            // console.log(res);
-            setData(res.data.data)
+            setData(res.data.data.reverse()); // Reversing the order of categories
         } catch (error) {
             console.log(error);
         }
@@ -22,7 +23,11 @@ const Category = () => {
     const deleteProduct = async (_id) => {
         try {
             let res = await axios.delete("https://prv-backend-github-io.onrender.com/api/category/" + _id)
-            console.log(res);
+            if (res.status === 200) {
+                toast.success("Maincategory deleted successfully")
+            } else {
+                toast.error("Failed to delete category");
+            }
             getApiData()
         } catch (error) {
             console.log(error);
@@ -35,7 +40,7 @@ const Category = () => {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="titlepage">
-                                <h2 className='text-center'>Admin  Category Table </h2>
+                                <h2 className='text-center'>Admin Category Table</h2>
                             </div>
                         </div>
                     </div>
@@ -43,7 +48,7 @@ const Category = () => {
             </div>
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-md-3 " style={{ marginTop: 35 }}>
+                    <div className="col-md-3" style={{ marginTop: 35 }}>
                         <Sidebar />
                     </div>
                     <div className="col-md-9">

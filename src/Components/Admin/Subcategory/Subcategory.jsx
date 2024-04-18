@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../Sidebar'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast';
 
 const Subcategory = () => {
   let [data, setData] = useState([])
@@ -9,12 +10,12 @@ const Subcategory = () => {
   const getApiData = async () => {
     try {
       let res = await axios.get("https://prv-backend-github-io.onrender.com/api/subcategory")
-      console.log(res);
-      setData(res.data.data)
+      setData(res.data.data.reverse()); // Reversing the order of subcategories
     } catch (error) {
       console.log(error);
     }
   }
+
   useEffect(() => {
     getApiData()
   }, [])
@@ -22,12 +23,17 @@ const Subcategory = () => {
   const deleteProduct = async (_id) => {
     try {
       let res = await axios.delete("https://prv-backend-github-io.onrender.com/api/subcategory/" + _id)
-      console.log(res);
+      if (res.status === 200) {
+        toast.success("Subcategory deleted successfully");
+      } else {
+        toast.error("Failed to delete subcategory");
+      }
       getApiData()
     } catch (error) {
       console.log(error);
     }
   }
+
   return (
     <>
       <div className="blue_bg mt-5">
@@ -35,7 +41,7 @@ const Subcategory = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="titlepage">
-                <h2 className='text-center'>Admin  SubCategory Table </h2>
+                <h2 className='text-center'>Admin Subcategory Table </h2>
               </div>
             </div>
           </div>
@@ -47,7 +53,7 @@ const Subcategory = () => {
             <Sidebar />
           </div>
           <div className="col-md-9">
-            <Link to="/admin/subcategory/create" className='btn btn-secondary float-end mb-5'>Create SubCategory</Link>
+            <Link to="/admin/subcategory/create" className='btn btn-secondary float-end mb-5'>Create Subcategory</Link>
             <table className='table table-bordered table-responsive'>
               <thead>
                 <tr>

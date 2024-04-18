@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Sidebar from '../Sidebar'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast';
 
 const CreateCtegory = () => {
   const navigate = useNavigate()
@@ -19,8 +20,12 @@ const CreateCtegory = () => {
     // alert(name)
     try {
       let res = await axios.post("https://prv-backend-github-io.onrender.com/api/category", data)
-      if(res.status===200)
-      navigate("/admin/category")
+      if (res.status === 200) {
+        toast.success("Maincategory Created successfully");
+        navigate("/admin/category");
+      } else {
+        toast.error("Failed to add product");
+      }
     } catch (error) {
       console.log(error);
     }

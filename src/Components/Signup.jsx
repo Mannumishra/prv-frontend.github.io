@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast';
+
+
 
 const Signup = () => {
   const navigate = useNavigate()
+
   const [data, setData] = useState({
     name: "",
     userName: "",
@@ -20,9 +24,12 @@ const Signup = () => {
     try {
       let res = await axios.post("https://prv-backend-github-io.onrender.com/api/user", data)
       console.log(res);
-      if (res.status === 200)
+      if (res.status === 200) {
+        toast.success("SignUp successfully");
         navigate("/login")
-
+      } else {
+        toast.error("Failed to signup");
+      }
     } catch (error) {
       console.log(error);
     }

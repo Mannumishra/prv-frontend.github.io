@@ -72,13 +72,13 @@ export default function Home() {
                 </div>
                 <div className="row">
                     <div className="col-md-4">
-                        <img src="img/13.jpeg" alt="" style={{height:500}} />
+                        <img src="img/13.jpeg" alt="" style={{ height: 500 }} />
                     </div>
                     <div className="col-md-4">
-                    <img src="img/12.jpeg" alt="" style={{height:500}} />
+                        <img src="img/12.jpeg" alt="" style={{ height: 500 }} />
                     </div>
                     <div className="col-md-4">
-                    <img src="img/11.jpeg" alt="" style={{height:500}} />
+                        <img src="img/11.jpeg" alt="" style={{ height: 500 }} />
                     </div>
                 </div>
             </div>

@@ -9,8 +9,8 @@ const UpdateProduct = () => {
     const navigate = useNavigate();
     const [allCategory, setAllCategory] = useState([]);
     const [allSubcategory, setAllSubcategory] = useState([]);
-    const [allsize, setAllSize] = useState([])
-    const [selectedMainCategory, setSelectedMainCategory] = useState(""); // Define selectedMainCategory state
+    const [allsize, setAllSize] = useState([]);
+    const [selectedMainCategory, setSelectedMainCategory] = useState("");
     const [data, setData] = useState({
         name: "",
         brand: "",
@@ -43,6 +43,7 @@ const UpdateProduct = () => {
             console.log(error);
         }
     };
+
     const getApiDataSize = async () => {
         try {
             let res = await axios.get("https://prv-backend-github-io.onrender.com/api/size");
@@ -55,7 +56,7 @@ const UpdateProduct = () => {
     useEffect(() => {
         getApiDataCategory();
         getApiDataSubCategory();
-        getApiDataSize()
+        getApiDataSize();
     }, []);
 
     const getAPIData = async () => {
@@ -66,6 +67,7 @@ const UpdateProduct = () => {
             console.log(error);
         }
     };
+
     useEffect(() => {
         getAPIData();
     }, []);
@@ -124,113 +126,95 @@ const UpdateProduct = () => {
     };
 
     return (
-        <>
-            <div className="blue_bg mt-5">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="titlepage">
-                                <h2 className='text-center  mb-5'>Update Product Details</h2>
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-md-3">
+                    <Sidebar />
+                </div>
+                <div className="col-md-9">
+                    <form>
+                        <div className="row">
+                            <div className="col">
+                                <label htmlFor="">Product Name <span className='text-danger'>*</span></label>
+                                <input type="text" className="form-control" name="name" value={data.name} onChange={getInputData} required placeholder="Product Name" />
+                            </div>
+                            <div className="col">
+                                <label htmlFor="">Product Category <span className='text-danger'>*</span></label>
+                                <select name="maincategory" onChange={(e) => setSelectedMainCategory(e.target.value)} className="form-control">
+                                    <option selected disabled>Choose Category</option>
+                                    {allCategory.map((item, index) => (
+                                        <option key={index} value={item.maincategory}>{item.maincategory}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="col">
+                                <label htmlFor="">Product Sub Category <span className='text-danger'>*</span></label>
+                                <select name="subcategory" onChange={getInputData} className="form-control">
+                                    <option selected disabled>Choose Sub Category</option>
+                                    {filterSubcategories().map((item, index) => (
+                                        <option key={index} value={item.subcategory}>{item.subcategory}</option>
+                                    ))}
+                                </select>
                             </div>
                         </div>
-                    </div>
+                        <div className="row">
+                            <div className="col">
+                                <label htmlFor="">Product Color <span className='text-danger'>*</span></label>
+                                <input type="text" className="form-control" name="color" value={data.color} onChange={getInputData} required placeholder="Product Color" />
+                            </div>
+                            <div className="col">
+                                <label htmlFor="">Product Brand <span className='text-danger'>*</span></label>
+                                <input type="text" className="form-control" name="brand" value={data.brand} onChange={getInputData} required placeholder="Product Brand" />
+                            </div>
+                            <div className="col">
+                                <label htmlFor="">Product Size <span className='text-danger'>*</span></label>
+                                <select name="sizename" onChange={getInputData} className="form-control">
+                                    <option selected disabled>Choose Size</option>
+                                    {filterSize().map((item, index) => (
+                                        <option key={index} value={item.sizename}>{item.sizename}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="col">
+                                <label htmlFor="">Product Stock <span className='text-danger'>*</span></label>
+                                <input type="number" className="form-control" name="stock" value={data.stock} onChange={getInputData} required placeholder="Product Stock" />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <label>Description</label>
+                                <textarea name="description" rows="5" value={data.description} className="form-control" placeholder="Description" onChange={getInputData}></textarea>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <label htmlFor="">Product Pic <span className='text-danger'>*</span></label>
+                                <input type="file" className="form-control" name="pic1" onChange={getInputFile} required />
+                            </div>
+                            <div className="col">
+                                <label htmlFor="">Product Pic <span className='text-danger'>*</span></label>
+                                <input type="file" className="form-control" name="pic2" onChange={getInputFile} required />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <label htmlFor="">Product Pic <span className='text-danger'>*</span></label>
+                                <input type="file" className="form-control" name="pic3" onChange={getInputFile} required />
+                            </div>
+                            <div className="col">
+                                <label htmlFor="">Product Pic <span className='text-danger'>*</span></label>
+                                <input type="file" className="form-control" name="pic4" onChange={getInputFile} required />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <button className="btn btn-primary mt-3" onClick={postData}>Update Product</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-md-3 " style={{ marginTop: "-35px" }}>
-                        <Sidebar />
-                    </div>
-                    <div className="col-md-9 ">
-                        <form action="">
-                            <div className="row">
-                                <div className='col'>
-                                    <label htmlFor="">Product Name <span className='text-danger'>*</span></label>
-                                    <input type="text" className="form-control" name='name' value={data.name} onChange={getInputData} required placeholder="Product Name" />
-                                </div>
-                                <div className='col'>
-                                    <label htmlFor="">Product Category <span className='text-danger'>*</span></label>
-                                    <select name="maincategory" onChange={(e) => setSelectedMainCategory(e.target.value)} className='form-control'>
-                                        <option selected disabled>Choose Category</option>
-                                        {
-                                            allCategory.map((item, index) => {
-                                                return <option key={index} value={item.maincategory}>{item.maincategory}</option>
-                                            })
-                                        }
-                                    </select>
-                                </div>
-                                <div className='col'>
-                                    <label htmlFor="">Product Sub Category <span className='text-danger'>*</span></label>
-                                    <select name="subcategory" onChange={getInputData} className='form-control'>
-                                        <option selected disabled>Choose Sub Category</option>
-                                        {
-                                            filterSubcategories().map((item, index) => {
-                                                return <option key={index} value={item.subcategory}>{item.subcategory}</option>;
-                                            })
-                                        }
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className='col'>
-                                    <label htmlFor="">Product Color <span className='text-danger'>*</span></label>
-                                    <input type="text" className="form-control" name='color' value={data.color} onChange={getInputData} required placeholder="Product color Name " />
-                                </div>
-                                <div className='col'>
-                                    <label htmlFor="">Product Brand <span className='text-danger'>*</span></label>
-                                    <input type="text" className="form-control" value={data.brand} name='brand' onChange={getInputData} required placeholder="Product color Name " />
-                                </div>
-                                <div className='col'>
-                                    <label htmlFor="">Product Size <span className='text-danger'>*</span></label>
-                                    <select name="sizename" onChange={getInputData} className='form-control'>
-                                        <option selected disabled>Choose Size</option>
-                                        {
-                                            filterSize().map((item, index) => {
-                                                return <option key={index} value={item.sizename}>{item.sizename}</option>;
-                                            })
-                                        }
-                                    </select>
-                                </div>
-                                <div className='col'>
-                                    <label htmlFor="">Product Stock <span className='text-danger'>*</span></label>
-                                    <input type="Number" className="form-control" name='stock' value={data.stock} onChange={getInputData} required placeholder="Product Stock" />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="mb-3">
-                                    <label>Descriptiion</label>
-                                    <textarea name="description" rows="5" value={data.description} className='form-control' placeholder='Description...' onChange={getInputData}></textarea>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className='col'>
-                                    <label htmlFor="">Product Pic <span className='text-danger'>*</span></label>
-                                    <input type="file" className="form-control" name='image1' onChange={getInputFile} required placeholder="Product Pic" />
-                                </div>
-                                <div className='col'>
-                                    <label htmlFor="">Product Pic <span className='text-danger'>*</span></label>
-                                    <input type="file" className="form-control" name='image2' onChange={getInputFile} required placeholder="Product Pic" />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className='col'>
-                                    <label htmlFor="">Product pic <span className='text-danger'>*</span></label>
-                                    <input type="file" className="form-control" name='image3' onChange={getInputFile} required placeholder="Product pic" />
-                                </div>
-                                <div className='col'>
-                                    <label htmlFor="">Product pic <span className='text-danger'>*</span></label>
-                                    <input type="file" className="form-control" name='image4' onChange={getInputFile} required placeholder="Product pic" />
-                                </div>
-                            </div>
-                            <div>
-                                <button className='btn  mt-2 mb-3 text-light text-center w-100' onClick={postData} style={{ backgroundColor: "#183661" }}>Update Product</button>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </>
+        </div>
     );
 };
 

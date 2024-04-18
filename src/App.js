@@ -27,6 +27,10 @@ import UpdateSubcategory from "./Components/Admin/Subcategory/UpdateSubcategory"
 import CreateSize from "./Components/Admin/Size/CreateSize";
 import Size from "./Components/Admin/Size/Size";
 import UpdateSize from "./Components/Admin/Size/UpdateSize";
+import toast, { Toaster } from 'react-hot-toast';
+import SingleOrder from "./Components/SingleOrder";
+import AdminSinglePageOrder from "./Components/Admin/AdminSinglePageOrder";
+
 
 
 function App() {
@@ -46,6 +50,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/singlepage" element={<SinglePageProduct />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/singleorder/:_id" element={<SingleOrder />} />
+
 
           <Route path="/adminhome" element={<AdminHome />} />
           <Route path="/admin/product" element={<AdminProduct />} />
@@ -66,10 +72,13 @@ function App() {
 
 
           <Route path="/admin/order" element={<AdminOrder />} />
+          <Route path="/adminordersinglpage/:_id" element={<AdminSinglePageOrder />} />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
+
+      <Toaster />
     </>
   );
 }

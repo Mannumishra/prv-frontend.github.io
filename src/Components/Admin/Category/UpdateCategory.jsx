@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Sidebar from '../Sidebar';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const UpdateCategory = () => {
     const { _id } = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState({
-        name: ""
+        maincategory: ""
     });
 
     const getInputData = (e) => {
@@ -21,11 +22,13 @@ const UpdateCategory = () => {
             let res = await axios.put(`https://prv-backend-github-io.onrender.com/api/category/${_id}`, data);
             console.log(res);
             if (res.status === 200) {
-                navigate("/admin/category"); // Redirect to the category list page
+                toast.success("Maincategory Updated successfully")
+                navigate("/admin/category");
+            } else {
+                toast.error("Failed deletd");
             }
         } catch (error) {
             console.log(error);
-            // Handle error: show an error message to the user
         }
     };
 
@@ -35,7 +38,6 @@ const UpdateCategory = () => {
             setData(res.data.data);
         } catch (error) {
             console.log(error);
-            // Handle error: show an error message to the user
         }
     };
 
@@ -66,7 +68,7 @@ const UpdateCategory = () => {
                             <div className="row">
                                 <div className='col'>
                                     <label htmlFor="name">Category Name <span className='text-danger'>*</span></label>
-                                    <input type="text" className="form-control" name='name' value={data.name} onChange={getInputData} required placeholder="Category Name" />
+                                    <input type="text" className="form-control" name='maincategory' value={data.maincategory} onChange={getInputData} required placeholder="Category Name" />
                                 </div>
                                 <button className='btn mt-2 mb-3 text-light text-center w-100' onClick={postData} style={{ backgroundColor: "#183661" }}>Update Category</button>
                             </div>

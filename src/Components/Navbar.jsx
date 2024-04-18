@@ -56,10 +56,10 @@ export default function Navbar() {
                         )}
 
                         {isLoggedIn && !isAdmin && (
-                           <>
-                            <Link className="nav-link" to="/singlepage">Product</Link>
-                            <Link to="/cart"><i className='fa fa-shopping-bag text-dark fs-6 mt-4'></i></Link>
-                           </>
+                            <>
+                                <Link className="nav-link" to="/singlepage">Product</Link>
+                                <Link to="/cart"><i className='fa fa-shopping-bag text-dark fs-6 mt-4'></i></Link>
+                            </>
                         )}
 
                         {!isLoggedIn && (
@@ -69,7 +69,7 @@ export default function Navbar() {
                                 <Link to="/product" className="nav-item nav-link">Product</Link>
                                 {/* <Link to="/singlepage" className="nav-item nav-link">Single Page</Link> */}
                                 <Link to="/contact" className="nav-item nav-link">Contact</Link>
-                               
+
                             </>
                         )}
                     </div>
