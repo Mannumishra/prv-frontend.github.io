@@ -5,7 +5,11 @@ import { Link, useParams } from 'react-router-dom';
 const AdminOrder = () => {
     const [orders, setOrders] = useState([]);
     const { _id } = useParams();
-
+    // console.log(_id)
+    const [consOrder, setConsOrder] = useState({
+        orderid:_id
+    })
+console.log(consOrder)
     const getApiData = async () => {
         try {
             const res = await axios.get("https://prv-backend-github-io.onrender.com/api/order");
@@ -19,8 +23,16 @@ const AdminOrder = () => {
         getApiData();
     }, []);
 
-    // Filter orders based on the _id parameter
     const filteredOrders = orders.filter(order => order.orderId === _id);
+
+    const confirmOrder = async () => {
+        try {
+            let res = await axios.post("http://localhost:8000/api/order/confirm" ,consOrder)
+            console.log(res);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
@@ -48,6 +60,7 @@ const AdminOrder = () => {
                                     <th>Category</th>
                                     <th>Subcategory</th>
                                     <th>Order Date</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,6 +73,7 @@ const AdminOrder = () => {
                                         <td>{product.maincategory}</td>
                                         <td>{product.subcategory}</td>
                                         <td>{new Date(product.updatedAt).toLocaleDateString()}</td>
+                                        <td><button className='btn btn-success' onClick={confirmOrder}>Confirm Order</button></td>
                                     </tr>
                                 ))}
                             </tbody>

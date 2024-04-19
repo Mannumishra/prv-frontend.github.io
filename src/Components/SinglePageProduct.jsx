@@ -55,6 +55,7 @@ const SinglePageProduct = () => {
         try {
             let res = await axios.get("https://prv-backend-github-io.onrender.com/api/product");
             setProduct(res.data.data);
+            // console.log(res);
         } catch (error) {
             console.log(error);
         }
@@ -178,7 +179,7 @@ const SinglePageProduct = () => {
                                             <td><h6>{item.sizename}</h6></td>
                                             <td><h6>{item.stock}</h6></td>
                                             <td>
-                                                <input type="text" min="0" style={{ width: 50 }} value={quantities[item._id] || 0} onChange={(e) => handleChangeQuantity(item._id, parseInt(e.target.value))} />
+                                                <input type="text" min='0' style={{ width: 50 }} value={quantities[item._id] || 0} onChange={(e) => handleChangeQuantity(item._id, parseInt(e.target.value))} />
                                             </td>
                                             <td className=''><button style={{ width: "100%" }} onClick={() => addtoCart(item._id, item.name, item.pic1, quantities[item._id], item.sizename, item.color, item.stock, item.maincategory, item.subcategory)} className='btn btn-success'>add</button></td>
                                         </tr>
