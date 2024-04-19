@@ -52,19 +52,19 @@ const Contact = () => {
                   <div className="col-md-4">
                      <div className="bg-light d-flex flex-column justify-content-center p-4">
                         <h5 className="text-uppercase">// Address //</h5>
-                        <p className="m-0"><i className="fa fa-home text-primary me-2"></i>A-43, Sector 16, Noida, India</p>
+                        <p className="m-0"><i className="fa fa-home text-primary me-2"></i>B-314 MANGOLPURI PH-1,NEW DELHI 110083</p>
                      </div>
                   </div>
                   <div className="col-md-4">
                      <div className="bg-light d-flex flex-column justify-content-center p-4">
                         <h5 className="text-uppercase">// Email //</h5>
-                        <p className="m-0"><i className="fa fa-envelope-open text-primary me-2"></i><a href="mailto:vishankchauhan@gmail.com" className='text-dark'>vishankchauhan@gmail.com</a></p>
+                        <p className="m-0"><i className="fa fa-envelope-open text-primary me-2"></i><a href="mailto:parav0087@gmail.com" className='text-dark'>parav0087@gmail.com</a></p>
                      </div>
                   </div>
                   <div className="col-md-4">
                      <div className="bg-light d-flex flex-column justify-content-center p-4">
                         <h5 className="text-uppercase">// Phone //</h5>
-                        <p className="m-0"><i className="fa fa-phone text-primary me-2"></i><a href="tel:+919873848046" className='text-dark'>+91-9873848046</a></p>
+                        <p className="m-0"><i className="fa fa-phone text-primary me-2"></i><a href="tel:+9321227881" className='text-dark'>+91-9321227881</a></p>
                      </div>
                   </div>
                   {/* </div> */}
@@ -75,7 +75,6 @@ const Contact = () => {
 
                   <div className="col-md-6">
                      <div className="mapouter"><div className="gmap_canvas"><iframe width="100%" height="500px" id="gmap_canvas" src="https://maps.google.com/maps?q=a-43%20Noida%20Sector%2016&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe></div></div>
-
                   </div>
                   <div className="col-md-6 ">
                      <form onSubmit={postData} className="">
