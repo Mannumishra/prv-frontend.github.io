@@ -11,6 +11,8 @@ const Sidebar = () => {
         <Link to='/admin/product'><li className="list-group-item mb-3">Product <span className='fa fa-list float-end'></span></li></Link>
         <Link to='/admin/order'><li className="list-group-item mb-3">Orders <span className='fa fa-list float-end'></span></li></Link>
          <Link to='/admin/contact'><li className="list-group-item">Contact <span className='fa fa-list float-end'></span></li></Link>
+         <Link to='/signup'><li className="list-group-item">Create New Account for User <span className='fa fa-list float-end'></span></li></Link>
+         {/* <Link to='/signup'><li className="list-group-item">Our Client<span className='fa fa-list float-end'></span></li></Link> */}
       </ul>
     </div>
   )

@@ -22,16 +22,24 @@ const Signup = () => {
   const postData = async (e) => {
     e.preventDefault()
     try {
-      let res = await axios.post("https://prv-backend-github-io.onrender.com/api/user", data)
-      console.log(res);
-      if (res.status === 200) {
+      const token = localStorage.getItem('token');
+      let res = await axios.post("https://prv-backend-github-io.onrender.com/api/user", data, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      console.log(res.data.status);
+      if(res.data.status===440){
+        toast.error("Faild to signup");
+      }
+      else if (res.status === 200) {
         toast.success("SignUp successfully");
-        navigate("/login")
+        navigate("/adminhome")
       } else {
         toast.error("Failed to signup");
       }
     } catch (error) {
-      console.log(error);
+      toast.error("Failed to signup");
     }
   }
   return (
@@ -56,7 +64,7 @@ const Signup = () => {
             <form action="" >
               <div className="">
                 <div className='col'>
-                  <label htmlFor=""> Name <span className='text-danger'>*</span></label>
+                  <label htmlFor="">Company Name <span className='text-danger'>*</span></label>
                   <input type="text" className="form-control" name='name' onChange={getInputData} required placeholder=" Name" />
                 </div>
                 <div className='col'>

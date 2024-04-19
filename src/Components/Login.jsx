@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axiox from "axios"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast';
 
 
@@ -65,6 +65,7 @@ const Login = () => {
             <div>
               <button className='btn  mt-2 mb-3 text-light text-center w-100' onClick={postData} style={{ backgroundColor: "#183661" }}>Login </button>
             </div>
+            <p>Please contact our team if you need id and password <Link to="/contact" className='text-success'>Click Here</Link></p>
           </div>
           <div className="col-md-3"></div>
         </div>
