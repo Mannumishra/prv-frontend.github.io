@@ -64,7 +64,6 @@ export default function Navbar() {
                                 <Link to="/" className="nav-item nav-link active" onClick={handleLinkClick}>Home</Link>
                                 <Link to="/about" className="nav-item nav-link" onClick={handleLinkClick}>About</Link>
                                 <Link to="/product" className="nav-item nav-link" onClick={handleLinkClick}>Product</Link>
-                                {/* <Link to="/singlepage" className="nav-item nav-link" onClick={handleLinkClick}>Single Page</Link> */}
                                 <Link to="/contact" className="nav-item nav-link" onClick={handleLinkClick}>Contact</Link>
 
                             </>
