@@ -48,8 +48,8 @@ const SingleOrder = () => {
                                 <th>Product Name</th>
                                 <th>Product Category</th>
                                 <th>Product Subcategory</th>
-                                <th>Quantity</th>
                                 <th>Size</th>
+                                <th>Quantity</th>
                                 <th>Date</th>
                             </tr>
                         </thead>
@@ -61,8 +61,8 @@ const SingleOrder = () => {
                                         <td>{product.name}</td>
                                         <td>{product.maincategory}</td>
                                         <td>{product.subcategory}</td>
-                                        <td>{product.quantity}</td>
                                         <td>{product.sizename}</td>
+                                        <td>{product.quantity}</td>
                                         <td>{new Date(product.updatedAt).toLocaleDateString()}</td>
                                     </tr>
                                 ))

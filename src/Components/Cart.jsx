@@ -63,6 +63,9 @@ const Cart = () => {
                         <tr>
                             <th>Image</th>
                             <th>Product Name</th>
+                            <th>Category</th>
+                            <th>SubCategory</th>
+                            <th>Size</th>
                             <th>Quantity</th>
                             <th>Action</th>
                         </tr>
@@ -72,6 +75,9 @@ const Cart = () => {
                             <tr key={index}>
                                 <td><img src={item.image} alt="" style={{ height: "100px" }} /></td>
                                 <td>{item.name}</td>
+                                <td>{item.maincategory}</td>
+                                <td>{item.subcategory}</td>
+                                <td>{item.sizename}</td>
                                 <td>{item.quantity}</td>
                                 <td><button className='btn btn-danger' onClick={() => deleteFromCart(index)}>Remove </button></td>
                             </tr>

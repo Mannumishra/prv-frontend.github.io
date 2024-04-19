@@ -19,6 +19,7 @@ const Login = () => {
     e.preventDefault()
     try {
       let res = await axiox.post("https://prv-backend-github-io.onrender.com/api/user/login", data)
+      console.log(res);
       if (res.status === 200) {
         localStorage.setItem("token", res.data.token)
         toast.success("Login successfully");
