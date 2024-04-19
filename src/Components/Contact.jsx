@@ -74,7 +74,7 @@ const Contact = () => {
 
 
                   <div className="col-md-6">
-                     <div className="mapouter"><div className="gmap_canvas"><iframe width="100%" height="500px" id="gmap_canvas" src="https://maps.google.com/maps?q=a-43%20Noida%20Sector%2016&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe></div></div>
+                     <div className="mapouter"><div className="gmap_canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14000.34539407763!2d77.06724875541995!3d28.6870635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d059dc195f1d5%3A0x149f307537ba6d99!2sB-296%20Mangolpuri%20Industrial%20Area%2C%20Phase%201!5e0!3m2!1sen!2sin!4v1713505721137!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
                   </div>
                   <div className="col-md-6 ">
                      <form onSubmit={postData} className="">
