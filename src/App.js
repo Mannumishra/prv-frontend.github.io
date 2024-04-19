@@ -30,6 +30,7 @@ import UpdateSize from "./Components/Admin/Size/UpdateSize";
 import toast, { Toaster } from 'react-hot-toast';
 import SingleOrder from "./Components/SingleOrder";
 import AdminSinglePageOrder from "./Components/Admin/AdminSinglePageOrder";
+import Admincontact from "./Components/Admin/Contact/AdminContact";
 
 
 
@@ -73,6 +74,8 @@ function App() {
 
           <Route path="/admin/order" element={<AdminOrder />} />
           <Route path="/adminordersinglpage/:_id" element={<AdminSinglePageOrder />} />
+
+          <Route path="/admin/contact" element={<Admincontact />} />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
         <Footer />

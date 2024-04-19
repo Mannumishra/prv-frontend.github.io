@@ -9,7 +9,8 @@ const Sidebar = () => {
         <Link to='/admin/subcategory'><li className="list-group-item mb-3">Subcategory <span className='fa fa-list float-end'></span></li></Link>
         <Link to='/admin/size'><li className="list-group-item mb-3">Size <span className='fa fa-list float-end'></span></li></Link>
         <Link to='/admin/product'><li className="list-group-item mb-3">Product <span className='fa fa-list float-end'></span></li></Link>
-        <Link to='/admin/order'><li className="list-group-item">Orders <span className='fa fa-list float-end'></span></li></Link>
+        <Link to='/admin/order'><li className="list-group-item mb-3">Orders <span className='fa fa-list float-end'></span></li></Link>
+         <Link to='/admin/contact'><li className="list-group-item">Contact <span className='fa fa-list float-end'></span></li></Link>
       </ul>
     </div>
   )
